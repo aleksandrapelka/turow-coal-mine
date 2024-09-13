@@ -1,4 +1,3 @@
-import ee
 import pandas as pd
 from meteostat import Stations, Daily, Monthly
 from datetime import datetime
@@ -25,11 +24,11 @@ def get_statistics_data(index_name):
 
 # SPATIAL DATA
 @st.cache_data
-def ee_authenticate(token_name="EARTHENGINE_TOKEN"):
-    geemap.ee_initialize(token_name=token_name)
+def authenticate():
+    geemap.ee_initialize()
 
 
-ee_authenticate(token_name="EARTHENGINE_TOKEN")
+authenticate()
 
 selected_units = ee.FeatureCollection('users/aleksandra_pelka/selected_units')
 zittau = ee.FeatureCollection('projects/drought-monitoring-417414/assets/Zittau')
